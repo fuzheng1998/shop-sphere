@@ -1,6 +1,7 @@
-<mat-drawer-container
-  [autosize]="true"
-  class="min-h-full max-w-7xl mx-auto border-x"
->
-  
-</mat-drawer-container>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav mode="side" [opened]="isOpen">Sidenav content</mat-sidenav
+  >
+  <mat-sidenav-content><button mat-button (click)="onClose(this.isOpen)">
+    close
+  </button></mat-sidenav-content>
+</mat-sidenav-container>
