@@ -1,6 +1,10 @@
-<header>
-  <mat-toolbar>
-    <a routerLink="/">ShopSphere</a>
-    <mat-icon>shopping_cart</mat-icon>
-  </mat-toolbar>
-</header>
+<mat-toolbar class="justify-between max-w-7xl mx-auto border-x">
+  <a routerLink="">shop sphere</a>
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon matBadge="15" matBadgeColor="warn">shopping_cart</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>Item 1</button>
+  <button mat-menu-item>Item 2</button>
+</mat-menu>
