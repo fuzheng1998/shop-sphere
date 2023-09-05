@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./product-box.component.css']
 })
 export class ProductBoxComponent {
+  product: any;
+  fullWidthMode: any;
 
+  onAddToCart() {
+
+  }
 }
