@@ -21,12 +21,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTreeModule } from '@angular/material/tree';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductsHeaderComponent } from './pages/home/components/products-header/products-header.component';
+import { ProductBoxComponent } from './pages/home/components/product-box/product-box.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    ProductsHeaderComponent
+    ProductsHeaderComponent,
+    ProductBoxComponent
   ],
   imports: [
     BrowserModule,
