@@ -10,7 +10,9 @@
         Toggle sidenav
       </button>
     </div>
-    <app-products-header></app-products-header>
+    <app-products-header
+    (sortChange)="onSortChange($event)"
+    ></app-products-header>
     <mat-grid-list gutterSize="16" [cols]="3" [rowHeight]="rowHeight">
       <mat-grid-tile>
         <app-product-box></app-product-box>

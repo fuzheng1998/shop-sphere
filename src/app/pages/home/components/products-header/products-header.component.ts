@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-products-header',
@@ -13,9 +13,11 @@ onItemsUpdated(arg0: number) {
 throw new Error('Method not implemented.');
 }
 itemsShowCount: any;
-onSortUpdated(arg0: string) {
-throw new Error('Method not implemented.');
+onSortUpdated(sortBy: string) {
+  this.sort = sortBy
+  this.sortChange.emit(sortBy)
 }
-sort: any;
+@Output() sortChange = new EventEmitter<string>();
+sort: string= 'desc';
 
 }
