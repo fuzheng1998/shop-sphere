@@ -9,7 +9,6 @@ export class HomeComponent {
   onSortChange(newSort: string): void {
     this.sort = newSort;
     console.log(`sort in home compoent by ${this.sort}`);
-    
   }
   cols = 3;
   rowHeight: number = ROWS_HEIGHT[this.cols];

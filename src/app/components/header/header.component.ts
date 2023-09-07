@@ -6,9 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-onClearCart() {
-throw new Error('Method not implemented.');
-}
+  onClearCart() {
+    throw new Error('Method not implemented.');
+  }
   getTotal(arg0: any): string | number {
     throw new Error('Method not implemented.');
   }

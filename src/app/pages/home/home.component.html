@@ -11,7 +11,7 @@
       </button>
     </div>
     <app-products-header
-    (sortChange)="onSortChange($event)"
+      (sortChange)="onSortChange($event)"
     ></app-products-header>
     <mat-grid-list gutterSize="16" [cols]="3" [rowHeight]="rowHeight">
       <mat-grid-tile>
@@ -27,8 +27,5 @@
         <app-product-box></app-product-box>
       </mat-grid-tile>
     </mat-grid-list>
-
-
   </mat-drawer-content>
-
 </mat-drawer-container>

@@ -30,7 +30,7 @@ import { CartComponent } from './pages/cart/cart.component';
     HomeComponent,
     ProductsHeaderComponent,
     ProductBoxComponent,
-    CartComponent
+    CartComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +52,6 @@ import { CartComponent } from './pages/cart/cart.component';
     HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
