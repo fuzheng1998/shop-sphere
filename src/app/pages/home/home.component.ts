@@ -10,7 +10,18 @@ export class HomeComponent {
     this.sort = newSort;
     console.log(`sort in home compoent by ${this.sort}`);
   }
+  count = '12';
   cols = 3;
   rowHeight: number = ROWS_HEIGHT[this.cols];
   sort = 'desc';
+  onItemCountChange(itemCount: number): void {
+    this.count = itemCount.toString();
+    console.log(`count in home compoent by ${this.count}`);
+  }
+  onColumnsCountChange(columnsCount: number): void {
+    this.cols = columnsCount;
+    this.rowHeight = ROWS_HEIGHT[this.cols];
+    console.log(`cols in home compoent by ${this.cols}`);
+  }
+
 }

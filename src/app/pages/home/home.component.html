@@ -12,6 +12,8 @@
     </div>
     <app-products-header
       (sortChange)="onSortChange($event)"
+      (itemsCountChange)="onItemCountChange($event)"
+      (columnsCountChange)="onColumnsCountChange($event)"
     ></app-products-header>
     <mat-grid-list gutterSize="16" [cols]="3" [rowHeight]="rowHeight">
       <mat-grid-tile>

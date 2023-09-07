@@ -6,24 +6,23 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./products-header.component.css'],
 })
 export class ProductsHeaderComponent {
-  private itemsChange = new EventEmitter<number>();
-
-  onColumnsUpdated(arg0: number) {
-    throw new Error('Method not implemented.');
-  }
-
-  onItemsUpdated(itemNum: number) {
-    this.itemsShowCount = itemNum;
-    this.itemsChange.emit(itemNum);
-  }
-
-  itemsShowCount: any;
-
-  onSortUpdated(sortBy: string) {
-    this.sort = sortBy;
-    this.sortChange.emit(sortBy);
-  }
-
+  @Output() columnsCountChange = new EventEmitter<number>();
+  @Output() itemsCountChange = new EventEmitter<number>();
   @Output() sortChange = new EventEmitter<string>();
+  itemsShowCount = 12;
   sort = 'desc';
+
+  onColumnsUpdated(colsNum: number): void {
+    this.columnsCountChange.emit(colsNum);
+  }
+
+  onItemsUpdated(count: number): void {
+    this.itemsCountChange.emit(count);
+    this.itemsShowCount = count;
+  }
+
+  onSortUpdated(newSort: string): void {
+    this.sortChange.emit(newSort);
+    this.sort = newSort;
+  }
 }
