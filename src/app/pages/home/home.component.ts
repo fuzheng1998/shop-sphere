@@ -1,23 +1,32 @@
-import { Component } from '@angular/core';
-const ROWS_HEIGHT: { [id: number]: number } = { 1: 400, 3: 335, 4: 350 };
+import {Component} from '@angular/core';
+
+const ROWS_HEIGHT: { [id: number]: number } = {1: 400, 3: 335, 4: 350};
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
+  /**
+   * @description This method is applied as an attribute value of 'sortChange' in the app-products-header component.
+   * @param newSort- The new sort value.
+   */
   onSortChange(newSort: string): void {
     this.sort = newSort;
     console.log(`sort in home compoent by ${this.sort}`);
   }
+
   count = '12';
   cols = 3;
   rowHeight: number = ROWS_HEIGHT[this.cols];
   sort = 'desc';
+
   onItemCountChange(itemCount: number): void {
     this.count = itemCount.toString();
     console.log(`count in home compoent by ${this.count}`);
   }
+
   onColumnsCountChange(columnsCount: number): void {
     this.cols = columnsCount;
     this.rowHeight = ROWS_HEIGHT[this.cols];

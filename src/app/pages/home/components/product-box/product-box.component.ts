@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-product-box',
@@ -7,7 +7,9 @@ import { Component } from '@angular/core';
 })
 export class ProductBoxComponent {
   product: any;
-  fullWidthMode: any;
+  @Input() fullWidthMode = false;
 
-  onAddToCart() {}
+  onAddToCart() {
+    console.log('Add to cart')
+  }
 }
