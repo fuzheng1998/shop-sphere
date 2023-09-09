@@ -1,1 +1,24 @@
-<p>cart works!</p>
+<mat-card *ngIf="!this.cart.items.length">
+    <mat-card-title>Cart is empty</mat-card-title>
+    <mat-card-content>
+        <p>There are no items in your cart.</p>
+    </mat-card-content>
+</mat-card>
+<mat-card *ngIf="this.cart.items.length">
+    <mat-card-title>Cart</mat-card-title>
+    <mat-card-content>
+        <mat-list>
+            <mat-list-item *ngFor="let item of this.cart.items">
+                <p>234</p>
+                <h4 mat-line>{{item.product}}</h4>
+                <p mat-line>{{item.quantity}} x {{item.price | currency}}</p>
+                <button mat-icon-button >
+                    <mat-icon>remove_shopping_cart</mat-icon>
+                </button>
+            </mat-list-item>
+        </mat-list>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button color="primary" >Checkout</button>
+    </mat-card-actions>
+</mat-card>
