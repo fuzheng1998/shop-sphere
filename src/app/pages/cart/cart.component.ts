@@ -4,21 +4,21 @@ import {CartItem} from "../../model/cart.model";
 
 const ELEMENT_DATA: Array<CartItem> = [
   {
-    product: '1',
+    product: 'https://placehold.co/150',
     name: 'Product 1',
     price: 100,
     quantity: 1,
     id: 1,
   },
   {
-    product: '2',
+    product: 'https://placehold.co/150',
     name: 'Product 2',
     price: 200,
     quantity: 2,
     id: 2,
   },
   {
-    product: '3',
+    product: 'https://placehold.co/150',
     name: 'Product 3',
     price: 300,
     quantity: 3,
@@ -37,7 +37,15 @@ export class CartComponent {
     'name',
     'price',
     'quantity',
+    'actions'
   ];
   dataSource = ELEMENT_DATA;
 
+  onDelete(element: CartItem) {
+    console.log('Delete', element);
+  }
+
+  onClear() {
+    console.log('Clear')
+  }
 }
