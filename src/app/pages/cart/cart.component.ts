@@ -1,37 +1,17 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CartItem} from "../../model/cart.model";
+import {Subscription} from "rxjs";
+import {CartService} from "../../service/cart/cart.service";
 
 
-const ELEMENT_DATA: Array<CartItem> = [
-  {
-    product: 'https://placehold.co/150',
-    name: 'Product 1',
-    price: 100,
-    quantity: 1,
-    id: 1,
-  },
-  {
-    product: 'https://placehold.co/150',
-    name: 'Product 2',
-    price: 200,
-    quantity: 2,
-    id: 2,
-  },
-  {
-    product: 'https://placehold.co/150',
-    name: 'Product 3',
-    price: 300,
-    quantity: 3,
-    id: 3,
-  }
-];
+
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css'],
 })
-export class CartComponent {
+export class CartComponent implements OnInit{
   displayedColumns: string[] = [
     'product',
     'name',
@@ -39,13 +19,26 @@ export class CartComponent {
     'quantity',
     'actions'
   ];
-  dataSource = ELEMENT_DATA;
+  dataSource: CartItem[] = [];
+  cartSubscription: Subscription | undefined;
+
+  constructor(private cartService: CartService) {
+
+  }
+  ngOnInit(): void {
+    this.cartSubscription = this.cartService.cart.subscribe((cart: CartItem[]) => {
+      this.dataSource = cart;
+    }
+    );
+  }
 
   onDelete(element: CartItem) {
     console.log('Delete', element);
+    this.cartService.removeFromCart(element);
   }
 
   onClear() {
     console.log('Clear')
+    this.cartService.clearCart();
   }
 }
