@@ -41,4 +41,14 @@ export class CartComponent implements OnInit{
     console.log('Clear')
     this.cartService.clearCart();
   }
+
+  onRemoveQuantity(element: CartItem) {
+    console.log('Remove quantity', element);
+    this.cartService.removeQuantity(element);
+  }
+
+  onAddQuantity(element: CartItem ) {
+    console.log('Add quantity', element);
+    this.cartService.addToCart(element);
+  }
 }

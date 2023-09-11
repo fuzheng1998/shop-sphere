@@ -34,15 +34,13 @@ export class CartService {
   // subject is special type of observable, which allows to push new values to subscribers
   cart = new BehaviorSubject<Array<CartItem>>(ELEMENT_DATA);
 
-  removeFromCart(item: CartItem, updateCart = true): CartItem[] {
-    const filteredItems = this.cart.value.filter((cartItem: CartItem) => {
-        return cartItem.id !== item.id;
-      }
+  removeFromCart(item: CartItem, updateCart = true) {
+    const filteredItems = this.cart.value.filter(
+      (_item) => _item.id !== item.id
     );
 
     if (updateCart) {
-      this.cart.next(filteredItems);
-      console.log('Cart updated', this.cart.value)
+      this.cart.next( filteredItems );
     }
 
     return filteredItems;
@@ -51,5 +49,41 @@ export class CartService {
   clearCart(): void {
     this.cart.next([]);
     console.log('Cart cleared', this.cart.value)
+  }
+
+  addToCart(item: CartItem): void {
+    const currentCart = this.cart.value;
+    const itemExists = currentCart.find((cartItem: CartItem) => {
+      return cartItem.id === item.id;
+    });
+
+    if (itemExists) {
+      itemExists.quantity++;
+    } else {
+      currentCart.push(item);
+    }
+
+    this.cart.next(currentCart);
+    console.log('Cart updated', this.cart.value)
+  }
+  removeQuantity(item: CartItem): void {
+    let itemForRemoval!: CartItem;
+
+    let filteredItems = this.cart.value.map((_item) => {
+      if (_item.id === item.id) {
+        _item.quantity--;
+        if (_item.quantity === 0) {
+          itemForRemoval = _item;
+        }
+      }
+
+      return _item;
+    });
+
+    if (itemForRemoval) {
+      filteredItems = this.removeFromCart(itemForRemoval, false);
+    }
+
+    this.cart.next(filteredItems );
   }
 }
