@@ -17,7 +17,8 @@ export class CartComponent implements OnInit{
     'name',
     'price',
     'quantity',
-    'actions'
+    'actions',
+    'total'
   ];
   dataSource: CartItem[] = [];
   cartSubscription: Subscription | undefined;
@@ -50,5 +51,8 @@ export class CartComponent implements OnInit{
   onAddQuantity(element: CartItem ) {
     console.log('Add quantity', element);
     this.cartService.addToCart(element);
+  }
+  getItemTotal(): number {
+    return this.cartService.getItemTotal();
   }
 }

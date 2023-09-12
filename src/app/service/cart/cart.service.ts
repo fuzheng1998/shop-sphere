@@ -86,4 +86,10 @@ export class CartService {
 
     this.cart.next(filteredItems );
   }
+
+  getItemTotal(): number {
+    return this.cart.value.reduce((accumulate, item) => {
+      return accumulate + item.price * item.quantity;
+    }, 0);
+  }
 }
