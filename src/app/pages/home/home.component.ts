@@ -1,4 +1,8 @@
 import {Component} from '@angular/core';
+import {CartService} from "../../service/cart/cart.service";
+import {StoreService} from "../../service/store/store.service";
+import {Subscription} from "rxjs";
+import {Product} from "../../model/product.model";
 
 const ROWS_HEIGHT: { [id: number]: number } = {1: 400, 3: 335, 4: 350};
 
@@ -8,9 +12,30 @@ const ROWS_HEIGHT: { [id: number]: number } = {1: 400, 3: 335, 4: 350};
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
+  productsSubscription: Subscription | undefined;
+  category: string | undefined;
+  products: Array<Product> | undefined;
+
+  constructor(
+    private storeService: StoreService,
+  ) {
+  }
+
+  ngOnInit(): void {
+    this.getProducts();
+  }
+
+  getProducts(): void {
+    this.productsSubscription = this.storeService
+      .getAllProducts(this.count, this.sort, this.category)
+      .subscribe((_products) => {
+        this.products = _products;
+      });
+  }
+
   /**
    * @description This method is applied as an attribute value of 'sortChange' in the app-products-header component.
-   * @param newSort- The new sort value.
+   * @param newSort{string}- The new sort value.
    */
   onSortChange(newSort: string): void {
     this.sort = newSort;

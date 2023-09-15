@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Product} from "../../model/product.model";
 
-const STORE_BASE_URL = 'http://localhost:3000';
+const STORE_BASE_URL = 'https://fakestoreapi.com';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +23,12 @@ export class StoreService {
       `${STORE_BASE_URL}/products${
         category ? '/category/' + category : ''
       }?sort=${sort}&limit=${limit}`
+    );
+  }
+
+  getAllCategories(): Observable<Array<string>> {
+    return this.httpClient.get<Array<string>>(
+      `${STORE_BASE_URL}/products/categories`
     );
   }
 }
