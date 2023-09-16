@@ -29,10 +29,17 @@ describe('StoreService', () => {
   it('should return an Observable<Array<Product>>', () => {
     const result = service.getAllProducts();
     expect(result).toBeInstanceOf(Observable);
-  } );
+  });
 
   it('should return an Observable<Array<string>>', () => {
     const result = service.getAllCategories();
     expect(result).toBeInstanceOf(Observable);
-  } );
+  });
+
+  // check number of products is more than 0
+  it('should return more than 0 products', () => {
+    service.getAllProducts().subscribe((products) => {
+      expect(products.length).toBeGreaterThan(0);
+    });
+  });
 });

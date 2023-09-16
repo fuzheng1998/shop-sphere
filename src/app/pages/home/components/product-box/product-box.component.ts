@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import {Product} from "../../../../model/product.model";
 
 @Component({
   selector: 'app-product-box',
@@ -6,7 +7,7 @@ import {Component, Input} from '@angular/core';
   styleUrls: ['./product-box.component.css'],
 })
 export class ProductBoxComponent {
-  product: any;
+  @Input() product: Product | undefined;
   @Input() fullWidthMode = false;
 
   onAddToCart() {

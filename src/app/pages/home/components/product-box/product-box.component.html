@@ -1,12 +1,14 @@
 <mat-card>
   <img mat-card-image
-       src="https://placehold.co/150"
-       alt="product-image"
+       [src]="product?.image"
+       [alt]="product?.title"
+       [height]="150"
+        [width]="150"
   />
   <div>
     <mat-card-header>
-      <mat-card-title>Matress</mat-card-title>
-      <mat-card-subtitle>{{ 150 | currency }}</mat-card-subtitle>
+      <mat-card-title>title</mat-card-title>
+      <mat-card-subtitle>{{ product?.price | currency }}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
       <p>very good quality handmade material</p>
