@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {CartService} from "../../service/cart/cart.service";
 import {StoreService} from "../../service/store/store.service";
 import {Subscription} from "rxjs";
 import {Product} from "../../model/product.model";
@@ -12,9 +11,11 @@ const ROWS_HEIGHT: { [id: number]: number } = {1: 400, 3: 335, 4: 350};
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
+  cols = 3;
   productsSubscription: Subscription | undefined;
   category: string | undefined;
   products: Array<Product> | undefined;
+  rowHeight: number = ROWS_HEIGHT[this.cols];
 
   constructor(
     private storeService: StoreService,
@@ -43,8 +44,6 @@ export class HomeComponent {
   }
 
   count = '12';
-  cols = 3;
-  rowHeight: number = ROWS_HEIGHT[this.cols];
   sort = 'desc';
 
   onItemCountChange(itemCount: number): void {

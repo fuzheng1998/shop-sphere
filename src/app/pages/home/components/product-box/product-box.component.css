@@ -1,0 +1,9 @@
+mat-card {
+  width: inherit;
+  height: inherit;
+  box-sizing: border-box;
+}
+img {
+  height: 160px;
+  width: 160px;
+}
