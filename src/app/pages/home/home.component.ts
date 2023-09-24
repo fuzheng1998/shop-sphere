@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {StoreService} from "../../service/store/store.service";
 import {Subscription} from "rxjs";
 import {Product} from "../../model/product.model";
+import {CartService} from "../../service/cart/cart.service";
 
 const ROWS_HEIGHT: { [id: number]: number } = {1: 400, 3: 335, 4: 350};
 
@@ -19,6 +20,7 @@ export class HomeComponent {
 
   constructor(
     private storeService: StoreService,
+    private cartService: CartService
   ) {
   }
 
@@ -55,6 +57,15 @@ export class HomeComponent {
     this.cols = columnsCount;
     this.rowHeight = ROWS_HEIGHT[this.cols];
     console.log(`cols in home compoent by ${this.cols}`);
+  }
+  onAddToCart(product: Product): void {
+    this.cartService.addToCart({
+      product: product.image,
+      name: product.title,
+      price: product.price,
+      quantity: 1,
+      id: product.id,
+    });
   }
 
 }

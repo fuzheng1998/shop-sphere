@@ -17,7 +17,7 @@
     ></app-products-header>
     <mat-grid-list gutterSize="16" [cols]="cols" [rowHeight]="rowHeight">
       <mat-grid-tile *ngFor="let product of products">
-        <app-product-box [product]="product"
+        <app-product-box [product]="product" (addToCart)="onAddToCart($event)"
         ></app-product-box>
       </mat-grid-tile>
     </mat-grid-list>
